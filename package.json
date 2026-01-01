@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "electron": "^39.2.7"
+    "electron": "^39.2.7",
+    "nodemon": "^3.1.11"
   },
   "name": "basic_electron",
   "version": "1.0.0",
