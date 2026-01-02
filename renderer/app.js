@@ -8,6 +8,7 @@ let showModal = document.getElementById('show-modal'),
 // Show modal
 showModal.addEventListener('click', e => {
     modal.style.display = 'flex'
+    itemUrl.focus()
 })
 
 // Hide modal
