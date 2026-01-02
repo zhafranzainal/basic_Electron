@@ -25,3 +25,10 @@ addItem.addEventListener('click', e => {
     }
 
 })
+
+// Listen for keyboard input
+itemUrl.addEventListener('keyup', e => {
+    if (e.key === 'Enter') {
+        addItem.click()
+    }
+})
