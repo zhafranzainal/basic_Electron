@@ -49,8 +49,9 @@ header {
     flex-grow: 1;
 }
 
-#items {
+main {
     flex-grow: 1;
+    overflow-y: scroll;
 }
 
 #no-items {
