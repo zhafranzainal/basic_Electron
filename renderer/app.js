@@ -1,3 +1,5 @@
+const { ipcRenderer } = require("electron")
+
 // DOM Nodes
 let showModal = document.getElementById('show-modal'),
     closeModal = document.getElementById('close-modal'),
@@ -21,7 +23,8 @@ addItem.addEventListener('click', e => {
 
     // Check url exists
     if (itemUrl.value) {
-        console.log(itemUrl.value)
+        // Send new item url to main process
+        ipcRenderer.send('new-item', itemUrl.value)
     }
 
 })
