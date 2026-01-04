@@ -29,6 +29,11 @@ addItem.addEventListener('click', e => {
 
 })
 
+// Listen for new item from main process
+ipcRenderer.on('new-item-success', (e, newItem) => {
+    console.log(newItem)
+})
+
 // Listen for keyboard input
 itemUrl.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
