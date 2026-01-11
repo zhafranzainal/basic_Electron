@@ -19,6 +19,21 @@ exports.select = e => {
     e.currentTarget.classList.add('selected')
 }
 
+// Move to newly selected item
+exports.changeSelection = direction => {
+
+    let currentItem = document.getElementsByClassName('read-item selected')[0]
+
+    if (direction === 'ArrowUp' && currentItem.previousElementSibling) {
+        currentItem.classList.remove('selected')
+        currentItem.previousElementSibling.classList.add('selected')
+    } else if (direction === 'ArrowDown' && currentItem.nextElementSibling) {
+        currentItem.classList.remove('selected')
+        currentItem.nextElementSibling.classList.add('selected')
+    }
+
+}
+
 exports.addItem = (item, isNew = false) => {
 
     // Create a new DOM node
