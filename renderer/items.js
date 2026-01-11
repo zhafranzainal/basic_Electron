@@ -34,10 +34,29 @@ exports.changeSelection = direction => {
 
 }
 
+// Open selected item
+exports.open = () => {
+
+    // Only if we have items (in case of menu open)
+    if (!this.storage.length) return
+
+    // Get selected item
+    let selectedItem = document.getElementsByClassName('read-item selected')[0]
+
+    // Get item's url
+    let contentUrl = selectedItem.dataset.url
+
+    console.log('open ', contentUrl)
+
+}
+
 exports.addItem = (item, isNew = false) => {
 
     // Create a new DOM node
     let itemNode = document.createElement('div')
+
+    // Set item url as data attribute
+    itemNode.setAttribute('data-url', item.url)
 
     itemNode.setAttribute('class', 'read-item')
     itemNode.innerHTML = `<img src="${item.screenshot}"><h2>${item.title}</h2>`
@@ -45,6 +64,7 @@ exports.addItem = (item, isNew = false) => {
     items.appendChild(itemNode)
 
     itemNode.addEventListener('click', this.select)
+    itemNode.addEventListener('dblclick', this.open)
 
     // Select the first item
     if (document.getElementsByClassName('read-item').length === 1) {
