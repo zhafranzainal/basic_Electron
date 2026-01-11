@@ -9,6 +9,16 @@ exports.save = () => {
     localStorage.setItem('readit-items', JSON.stringify(this.storage))
 }
 
+// Set item as selected
+exports.select = e => {
+
+    // Remove currently selected item class
+    document.getElementsByClassName('read-item selected')[0].classList.remove('selected')
+
+    // Add to clicked item
+    e.currentTarget.classList.add('selected')
+}
+
 exports.addItem = (item, isNew = false) => {
 
     // Create a new DOM node
@@ -18,6 +28,13 @@ exports.addItem = (item, isNew = false) => {
     itemNode.innerHTML = `<img src="${item.screenshot}"><h2>${item.title}</h2>`
 
     items.appendChild(itemNode)
+
+    itemNode.addEventListener('click', this.select)
+
+    // Select the first item
+    if (document.getElementsByClassName('read-item').length === 1) {
+        itemNode.classList.add('selected')
+    }
 
     // Add item to storage and persist
     if (isNew) {
