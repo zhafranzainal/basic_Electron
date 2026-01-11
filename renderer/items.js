@@ -9,7 +9,7 @@ exports.save = () => {
     localStorage.setItem('readit-items', JSON.stringify(this.storage))
 }
 
-exports.addItem = item => {
+exports.addItem = (item, isNew = false) => {
 
     // Create a new DOM node
     let itemNode = document.createElement('div')
@@ -20,7 +20,14 @@ exports.addItem = item => {
     items.appendChild(itemNode)
 
     // Add item to storage and persist
-    this.storage.push(item)
-    this.save()
+    if (isNew) {
+        this.storage.push(item)
+        this.save()
+    }
 
 }
+
+// Add items from storage when app loads
+this.storage.forEach(item => {
+    this.addItem(item, false)
+})
